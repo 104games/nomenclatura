@@ -90,20 +90,6 @@ resto = ["a) NH3 idruro covalente triidruro di azoto ammoniaca",
 "v) SiCl4 sale binario tetracloruro di silicio cloruro di silicio",
 "w) NiO ossido basico monossido di nichel ossido nicheloso",
 "x) CS2 sale binario disolfuro di carbonio solfuro di carbonio",
-"/ H2SO3 acido solforoso acido triossosolforico",
-"/ H2S acido solfidrico solfuro di diidrogeno",
-"/ HClO acido ipocloroso acido monossoclorico",
-"/ H3PO4 acido fosforico acido tetrossofosforico",
-"/ H2CrO4 acido cromico acido tetrossocromico",
-"/ HNO3 acido nitrico acido triossonitrico",
-"/ HF acido fluoridrico fluoruro di idrogeno",
-"/ H2O2 acqua ossigenata perossido di idrogeno",
-"/ NH3 ammoniaca triidruro di azoto",
-"/ BaH2 idruro di bario diidruro di bario",
-"/ K2O2 perossido di potassio perossido di potassio",
-"/ Cl2O5 anidride clorica pentossido di dicloro",
-"/ Mn2O7 anidride permanganica eptossido di dimanganese",
-"/ PH3 fosfina triidruro di fosforo",
 "a) CO2 ossido acido diossido di carbonio anidride carbonica",
 "b) CuO ossido basico monossido di rame ossido rameico",
 "c) SrO ossido basico ossido di stronzio ossido di stronzio",
@@ -130,8 +116,10 @@ resto = ["a) NH3 idruro covalente triidruro di azoto ammoniaca",
 "q) HgS monosolfuro di mercurio solfuro mercurico",
 "r) H2O2 perossido di idrogeno acqua ossigenata",
 "s) CS2 disolfuro di carbonio solfuro carbonico",
-"t) CaO ossido di calcio ossido di calcio",
-"a) H2CO3 acido carbonico acido triossocarbonico",
+"t) CaO ossido di calcio ossido di calcio"]
+
+
+acidi =["a) H2CO3 acido carbonico acido triossocarbonico",
 "b) HNO2 acido nitroso acido diossonitrico",
 "c) HNO3 acido nitrico acido triossonitrico",
 "d) H2SO3 acido solforoso acido triossosolforico",
@@ -139,7 +127,21 @@ resto = ["a) NH3 idruro covalente triidruro di azoto ammoniaca",
 "f) HClO acido ipocloroso acido monossoclorico",
 "g) HClO2 acido cloroso acido diossoclorico",
 "h) HClO3 acido clorico acido triossoclorico",
-"i) HClO4 acido perclorico acido tetrossoclorico"]
+"i) HClO4 acido perclorico acido tetrossoclorico",
+"/ H2SO3 acido solforoso acido triossosolforico",
+"/ H2S acido solfidrico solfuro di diidrogeno",
+"/ HClO acido ipocloroso acido monossoclorico",
+"/ H3PO4 acido fosforico acido tetrossofosforico",
+"/ H2CrO4 acido cromico acido tetrossocromico",
+"/ HNO3 acido nitrico acido triossonitrico",
+"/ HF acido fluoridrico fluoruro di idrogeno",
+"/ H2O2 acqua ossigenata perossido di idrogeno",
+"/ NH3 ammoniaca triidruro di azoto",
+"/ BaH2 idruro di bario diidruro di bario",
+"/ K2O2 perossido di potassio perossido di potassio",
+"/ Cl2O5 anidride clorica pentossido di dicloro",
+"/ Mn2O7 anidride permanganica eptossido di dimanganese",
+"/ PH3 fosfina triidruro di fosforo",]
 
 
 bruta = []
@@ -175,6 +177,13 @@ for frase in resto:
         trad.append(pezzi[len(pezzi)-2]+" " +pezzi[len(pezzi)-1])
         iupaac.append(pezzi[len(pezzi)-4]+" " +pezzi[len(pezzi)-3])
 
+
+for frase in acidi:
+    pezzi = frase.split()
+    bruta.append(pezzi[1])
+    trad.append(pezzi[2]+" "+pezzi[3])
+    iupaac.append(pezzi[4]+" "+pezzi[5])
+
 punteggio = 0
 
 while True:
@@ -183,53 +192,56 @@ while True:
     if quale == 0:
         print(bruta[domanda])
         risposta1= input("dimmi la nom iupac\n")
-        risposta2 = input("dimmi la nom tradizionale\n")
         if risposta1 == iupaac[domanda]:
             print("nom iupac giusta!")
             punteggio +=1
         else:
             print("sbagliata! quella giusta era: " + iupaac[domanda])
-            break
+            
+        risposta2 = input("dimmi la nom tradizionale\n")
+        
         if risposta2 == trad[domanda]:
             print("nom trad giusta!")
             punteggio +=1
         else:
             print("sbagliata! quella giusta era: " + trad[domanda])
-            break
+            
     
     if quale == 1:
         print(iupaac[domanda])
         risposta1= input("dimmi la bruta\n")
-        risposta2 = input("dimmi la nom tradizionale\n")
+        
         if risposta1 == bruta[domanda]:
             print("bruta giusta!")
             punteggio +=1
         else:
             print("sbagliata! quella giusta era: " + bruta[domanda])
-            break
+
+        risposta2 = input("dimmi la nom tradizionale\n")
         if risposta2 == trad[domanda]:
             print("nom trad giusta!")
             punteggio +=1
         else:
             print("sbagliata! quella giusta era: " + trad[domanda])
-            break
+            
 
     if quale == 2:
         print(trad[domanda])
         risposta1= input("dimmi la nom iupac\n")
-        risposta2 = input("dimmi la bruta\n")
+        
         if risposta1 == iupaac[domanda]:
             print("nom iupac giusta!")
             punteggio +=1
         else:
             print("sbagliata! quella giusta era: " + iupaac[domanda])
-            break
+
+        risposta2 = input("dimmi la bruta\n")
         if risposta2 == bruta[domanda]:
             print("bruta giusta!")
             punteggio +=1
         else:
             print("sbagliata! quella giusta era: " + bruta[domanda])
-            break
+            
     
     print("\n")
 
